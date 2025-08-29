@@ -3,36 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
-
-//class Job{
-//    public static function all(){
-//        return [
-//            [
-//                'id'=> 1,
-//                'title'=>'PHP',
-//                'salary'=>'500000$'
-//            ],
-//            [
-//                'id'=> 2,
-//                'title'=>'Javascript',
-//                'salary'=>'50000$'
-//            ],
-//            [
-//                'id'=> 3,
-//                'title'=>'AI/ML',
-//                'salary'=>'200000$'
-//            ]
-//        ];
-//    }
-//}
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/jobs', function () {
+//    $jobs = Job::all();
+//    $jobs = Job::with('employer')->paginate(3);
+//    $jobs = Job::with('employer')->simplePaginate(3);
+    $jobs = Job::with('employer')->cursorPaginate(3);
+
+
     return view('jobs', [
-        'jobs' => Job::all()
+        'jobs' => $jobs
     ]);
 });
 
