@@ -82,6 +82,10 @@
 
         <h1 class="text-2xl font-bold">
             {{ $heading ?? 'Default Heading' }}
+            <x-button href="/jobs/create" class=" text-black float-right p-1 x-2 px-3 py-2 text-sm font-medium m-1">
+                Save
+            </x-button>
+
         </h1>
         {{ $slot }}
     </body>
